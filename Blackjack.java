@@ -1,3 +1,9 @@
+/* 
+Grant Hood
+CSC 201
+05/01/2021
+*/
+
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -13,7 +19,7 @@ public class Blackjack{
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args){ //Game Play
 
 
         System.out.println("Welcome to BlackJack");
@@ -27,28 +33,28 @@ public class Blackjack{
         Deck playerHand = new Deck(); //Players hand
         Deck dealerHand = new Deck(); //Dealers hand
 
-        // System.out.println(myDeck); //debugging deck
+        // System.out.println(myDeck); //Print's Deck for debugging
 
         int playerChips = 100;
         int x;
 
-        for(x=1;playerChips>0 && playerChips<1000;x++){ //Betting
+        for(x=1;playerChips>0 && playerChips<1000;x++){ //Loop of Gameplay
             int Bet=0;
 
         System.out.println("Round: "+x);
         System.out.println("Your Chips: "+ playerChips+"\nPlace your Bet?");
             try{
-                Scanner playerInput = new Scanner(System.in); //Causes new object everytime a new bet is needed
-                Bet = playerInput.nextInt();
-                wait(500);
+                Scanner playerInput = new Scanner(System.in); //Creates new object every bet
+                Bet = playerInput.nextInt(); //prompts user to input bet
+                wait(500); //delays next text
             }
-            catch(InputMismatchException e){
-                System.out.println("We don't accept I's O's U'. Enter Chips as Integer!");
+            catch(InputMismatchException e){ //catches wrong type
+                System.out.println("We don't accept I's O's U'. Enter Chips as Integer!"); 
                 wait(1000);
                 continue;
             }
           
-            if(Bet==38193){
+            if(Bet==38193){ //Easter egg, used for debugging testing win condition
                 playerChips+=5000;
                 System.out.println("Nice job ;)");
                 break;
@@ -171,3 +177,65 @@ public class Blackjack{
         }
 
     }
+
+/* Sample Game:
+
+Welcome to BlackJack
+You Start with 100 Chips, get to 1000 to Win!
+Round: 1       
+Your Chips: 100
+Place your Bet?
+20
+        Your Hand 
+
+FOUR of DIAMOND's
+EIGHT of SPADE's
+Hand Score: 12
+_________________________
+
+
+Dealer Drew
+SIX of CLUB's
+Unknown
+Hit(1) or Stand(2)
+2
+Dealer's Hand: 
+
+SIX of CLUB's
+EIGHT of CLUB's
+Dealer Wins with 14 against 12
+Player Loses 20 chips.
+Dealer has 14
+End of Round
+
+
+Round: 2
+Your Chips: 80
+Place your Bet?
+80
+        Your Hand 
+
+TEN of HEART's
+NINE of HEART's
+Hand Score: 19
+_________________________
+
+
+Dealer Drew
+THREE of DIAMOND's
+Unknown
+Hit(1) or Stand(2)
+1
+You drew: FOUR of CLUB's
+You've Busted
+Dealer's Hand: 
+
+THREE of DIAMOND's
+THREE of CLUB's
+Dealer has 6
+End of Round
+
+
+You've Run Out Of Chips
+GAME OVER
+*/
